@@ -1,12 +1,3 @@
-// A clear navigation bar over the homepage photograph, solid once the page scrolls.
-if (document.body.classList.contains('index-page')) {
-  const header = document.querySelector('.site-header');
-  const updateHeader = () => header.classList.toggle('has-scrolled', window.scrollY > 24);
-  updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  window.addEventListener('pageshow', updateHeader);
-}
-
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 function closeMenu() {

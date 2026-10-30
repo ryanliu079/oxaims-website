@@ -1246,113 +1246,18 @@ body.sponsorship-page .benefit-list { column-gap:40px; row-gap:38px; }
  .gallery-content { padding-block:32px 50px; }
 }
 
-/* Membership planning: an explorable route to our first 1,000 members. */
-.membership-growth-section .section-heading { align-items:end; }
-.membership-growth-section .section-heading h2 { max-width:19ch; }
-.membership-growth { background:#11162b; color:#f4efdf; border:1px solid #c9ac6a55; border-radius:5px 12px 5px 9px; box-shadow:0 10px 30px #17203515; padding:26px; }
-.growth-topline { display:flex; justify-content:space-between; gap:14px; align-items:center; padding-bottom:25px; color:#b8bdcc; font-size:14px; }
-.growth-scenario-tag { color:#e6c888; border:1px solid #d3b37755; padding:6px 12px; border-radius:30px; }
-.growth-layout { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:26px; align-items:start; }
-.growth-chart-wrap { min-width:0; padding-top:12px; }
-.growth-chart { display:block; width:100%; height:auto; overflow:visible; touch-action:pan-y; user-select:none; cursor:ew-resize; }
-.growth-grid path { fill:none; stroke:#e0d9c513; stroke-width:1; }
-.growth-axis { fill:#b8bdcc; font:16px var(--font); }
-.growth-plan,.growth-line { fill:none; stroke:#e7c47a; stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
-.growth-plan { stroke-dasharray:5 6; opacity:.32; }
-.growth-line { filter:drop-shadow(0 0 5px #dfb45e66); }
-.growth-markers circle { fill:#e7c47a; stroke:#11162b; stroke-width:2; }
-.growth-cursor { stroke:#f2ead2; stroke-width:1.4; }
-.growth-dot { fill:#f0cb77; stroke:#fff4d4; stroke-width:2; filter:drop-shadow(0 0 7px #e4bb65aa); }
-.growth-date-tag { fill:#f0d393; font:600 18px var(--font); }
-.growth-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:22px 0 0; font-size:14px; color:#d5d8e2; }
-.growth-controls[hidden],.growth-events[hidden] { display:none; }
-.growth-controls > label:first-child { flex-basis:100%; }
-.growth-controls input[type="range"] { flex:1; min-width:110px; height:28px; padding:0; margin:0; cursor:ew-resize; accent-color:#e3bd72; background:transparent; }
-.growth-future { display:flex; align-items:center; gap:8px; cursor:pointer; }
-.growth-future input { accent-color:#d3af64; width:17px; height:17px; margin:0; }
-.membership-growth .growth-help { color:#aeb5c9; font-size:13px; line-height:1.6; margin:12px 0 0; }
-.growth-readout { padding:22px; border:1px solid #d2c6a52c; border-radius:8px; background:#090f2290; }
-.membership-growth .growth-readout p { margin:0; }
-.membership-growth .growth-readout-date { font-size:14px; color:#c2c6d2; }
-.membership-growth .growth-count { font:500 clamp(50px,5vw,76px)/1.2 var(--display); font-variant-numeric:tabular-nums; color:#f1d79b; margin-top:14px; letter-spacing:-3px; }
-.membership-growth .growth-count-label { color:#e7e1d4; font-size:15px; margin-top:4px; }
-.growth-progress { height:3px; background:#ebe2c51a; margin:25px 0 10px; overflow:hidden; }
-.growth-progress span { display:block; height:100%; background:#e3bd72; }
-.membership-growth .growth-target { display:flex; flex-direction:column; gap:3px; font-size:12px; color:#aeb5c9; }
-.growth-target strong { color:#ddd8ca; font-weight:400; }
-.growth-event-detail { margin-top:22px; padding-top:20px; border-top:1px solid #ece3cf20; min-height:180px; }
-.membership-growth .growth-event-label { color:#d5b978; font-size:12px; line-height:1.5; }
-.membership-growth .growth-event-detail h3 { font:600 19px/1.3 var(--font); color:#f1eddf; margin:10px 0; }
-.membership-growth .growth-event-detail > p:last-child { color:#bac1d3; font-size:14px; line-height:1.6; }
-.growth-breakdown { border-top:1px solid #ece3cf20; margin:20px 0 0; padding-top:15px; }
-.growth-breakdown div { display:flex; justify-content:space-between; gap:15px; margin:8px 0; font-size:12px; line-height:1.5; }
-.growth-breakdown dt { color:#aeb5c9; }.growth-breakdown dd { margin:0; color:#e4c789; white-space:nowrap; }
-.growth-events { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:20px; }
-.growth-events button { display:flex; justify-content:space-between; align-items:center; gap:15px; text-align:left; padding:13px 16px; color:#353a51; border:1px solid #a4885150; border-radius:3px 7px 3px 6px; background:#faf5e54d; font:14px/1.4 var(--font); cursor:pointer; }
-.growth-events button strong { color:#805f37; font-size:16px; }
-.growth-events button:hover { background:#d5bb7e33; }
-.growth-events button[aria-pressed="true"] { background:#e7d9b6; border-color:#9b793f; }
-.growth-events button:focus-visible,.growth-controls input:focus-visible { outline:3px solid #c39a50; outline-offset:4px; }
-.membership-growth-section .growth-assumptions { margin:20px 0 12px; max-width:100ch; font-size:13px; line-height:1.6; color:#55596c; }
-.growth-method { font-size:13px; line-height:1.7; color:#55596c; }
-.growth-method summary { cursor:pointer; color:#77572e; width:fit-content; }
-.growth-method p { max-width:95ch; font-size:13px; }
-@media(min-width:1450px) { .growth-layout { grid-template-columns:minmax(0,1fr) 300px; } }
-@media(max-width:1000px) {
- .growth-layout { grid-template-columns:1fr; }
- .growth-readout { display:grid; grid-template-columns:1fr 1.3fr; column-gap:35px; }
- .growth-readout > .growth-readout-date,.growth-readout > .growth-count,.growth-readout > .growth-count-label,.growth-readout > .growth-progress,.growth-readout > .growth-target { grid-column:1; }
- .growth-readout > .growth-event-detail { grid-column:2; grid-row:1/6; margin:0; padding:0; border:0; min-height:0; }
- .growth-readout > .growth-breakdown { grid-column:1/-1; }
- .growth-events { grid-template-columns:repeat(2,minmax(0,1fr)); }
-}
+/* Keep sponsorship focused on the proposal, a conversation and three reasons. */
+body.sponsorship-page .partnership-hero { padding-block:48px 52px; }
+body.sponsorship-page .partnership-hero-copy { max-width:880px; }
+body.sponsorship-page .partnership-hero h1 { margin-bottom:20px; }
+body.sponsorship-page .sponsor-actions { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; }
+body.sponsorship-page .sponsor-actions .button { min-height:60px; margin:0; padding:16px 28px; font-size:18px; }
+body.sponsorship-page .sponsor-actions .secondary { color:#f3e9ce; border-color:#d5b976; background:transparent; }
+body.sponsorship-page .sponsor-actions .secondary:hover { background:#d5b97618; }
+body.sponsorship-page main > section[aria-labelledby="value-title"] { padding-block:56px 72px; }
 @media(max-width:600px) {
- .membership-growth { padding:18px 12px; }
- .growth-topline { font-size:11px; gap:8px; padding-bottom:18px; }
- .growth-scenario-tag { padding:5px 8px; }
- .growth-readout { padding:18px; display:block; }
- .growth-readout > .growth-event-detail { margin-top:20px; padding-top:18px; border-top:1px solid #ece3cf20; }
- .growth-events { grid-template-columns:1fr; }
- .growth-controls { padding-inline:5px; }
- .growth-future { flex-basis:100%; }
- .growth-axis { font-size:22px; }.growth-date-tag { font-size:24px; }
- .growth-line { stroke-width:4; }
- .growth-topline > span:last-child { white-space:nowrap; }
+ body.sponsorship-page .partnership-hero { padding-block:32px 36px; }
+ body.sponsorship-page .sponsor-actions { flex-direction:column; gap:14px; }
+ body.sponsorship-page .sponsor-actions .button { width:100%; justify-content:space-between; }
+ body.sponsorship-page main > section[aria-labelledby="value-title"] { padding-block:36px 48px; }
 }
-
-/* The supplied Radcliffe Camera photograph replaces the dotted hero backdrop. */
-body[class] main>:is(.hero,.page-hero,.sponsor-teaser) {
- background-color:#0c1030;
- background-image:linear-gradient(90deg,rgba(8,14,35,.84) 0%,rgba(8,14,35,.72) 42%,rgba(8,14,35,.43) 100%),url('/assets/radcliffe-camera-background.png');
- background-size:cover;
- background-position:center,35% 38%;
- background-repeat:no-repeat;
- background-blend-mode:normal;
-}
-body.index-page main>.hero {
- background-image:linear-gradient(90deg,rgba(8,14,35,.8) 0%,rgba(8,14,35,.67) 43%,rgba(8,14,35,.42) 100%),url('/assets/radcliffe-camera-background.png');
- background-position:center,28% center;
-}
-body.index-page .hero-description { color:#ebeaf0; }
-body.index-page .model-caption { color:#e1e2e9; }
-@media(max-width:760px) {
- body[class] main>:is(.hero,.page-hero,.sponsor-teaser) {
-  background-image:linear-gradient(180deg,rgba(8,14,35,.7),rgba(8,14,35,.84)),url('/assets/radcliffe-camera-background.png');
-  background-position:center,22% top;
- }
-}
-@media(forced-colors:active) {
- body[class] main>:is(.hero,.page-hero,.sponsor-teaser) { background-image:none; background-color:Canvas; }
-}
-@media print {
- body[class] main>:is(.hero,.page-hero,.sponsor-teaser) { background-image:none; }
-}
-
-/* Let the photograph continue behind the homepage navigation. */
-body.index-page { --hero-header-height:88px; }
-body.index-page .site-header { background:rgba(8,14,35,.18); border-bottom-color:transparent; backdrop-filter:none; }
-body.index-page .site-header.has-scrolled { background:rgba(8,14,35,.94); backdrop-filter:blur(16px); border-bottom-color:#e5d7b526; }
-body.index-page main>.hero { max-width:none; margin-top:calc(-1 * var(--hero-header-height)); padding-top:calc(58px + var(--hero-header-height)); }
-@media(max-width:1000px) { body.index-page { --hero-header-height:78px; } }
-@media(max-width:760px) { body.index-page main>.hero { padding-top:calc(38px + var(--hero-header-height)); } }
-@media(forced-colors:active) { body.index-page .site-header,body.index-page .site-header.has-scrolled { background:Canvas; } }

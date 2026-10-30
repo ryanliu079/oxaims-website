@@ -7,14 +7,12 @@ const version = async name => createHash('sha256').update(await readFile(`${publ
 const cssVersion = await version('styles.css');
 const themeVersion = await version('site-theme.css');
 const scriptVersion = await version('script.js');
-const growthVersion = await version('membership-growth.mjs');
 const sculptureVersion = await version('sculptures-3d.js');
 for (const name of await readdir(publicDirectory)) {
   if (!name.endsWith('.html')) continue;
   const path = `${publicDirectory}${name}`;
   const original = await readFile(path, 'utf8');
   const stamped = original
-    .replace(/src="\/membership-growth\.mjs(?:\?[^"]*)?"/g, `src="/membership-growth.mjs?v=${growthVersion}"`)
     .replace(/href="\/styles\.css(?:\?[^\"]*)?"/g, `href="/styles.css?v=${cssVersion}"`)
     .replace(/href="\/site-theme\.css(?:\?[^\"]*)?"/g, `href="/site-theme.css?v=${themeVersion}"`)
     .replace(/src="\/sculptures-3d\.js(?:\?[^\"]*)?"/g, `src="/sculptures-3d.js?v=${sculptureVersion}"`)

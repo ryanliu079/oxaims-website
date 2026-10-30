@@ -2,7 +2,7 @@
 
 The Oxford AI Makers Society website: https://oxaims.org
 
-A student-built website with society events, project galleries, a Google Form signup, interactive Three.js models and an illustrative membership growth planner.
+A student-built website with society events, project galleries, a Google Form signup, interactive Three.js models and sponsorship information.
 
 ## Run locally
 
@@ -20,7 +20,6 @@ Open the local URL printed by the development server. Build with `npm run build`
 - `public/`: page HTML, shared CSS, browser scripts and assets.
 - `app/`: Vinext routes serving the pages and server endpoints.
 - `client/sculptures.js`: Three.js models, bundled by `npm run prebuild`.
-- `public/membership-growth.mjs`: the membership planning scenario and chart.
 - `db/`, `drizzle/`, `lib/server/`: server data schema, migrations and supporting code.
 
 The public join page links to the society's Google Form. The legacy registration database and admin routes remain for existing records; no registration data is included here.
