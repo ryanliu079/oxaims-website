@@ -27,6 +27,6 @@ The public join page links to the society's Google Form. The legacy registration
 
 ## Deployment
 
-The live site is published through Sites using `.openai/hosting.json`. This private GitHub repository is a source snapshot, not an automatic deployment trigger. Hosting credentials and runtime secrets are configured separately.
+The live site is published through Sites using `.openai/hosting.json`. This GitHub repository is a source snapshot, not an automatic deployment trigger. Hosting credentials and runtime secrets are configured separately.
 
 Do not commit `.env` files, credentials, local databases, member records, generated deployment archives or `node_modules`. This snapshot excludes local planning notes and the separate Oxtopus project.
