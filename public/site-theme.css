@@ -1067,7 +1067,7 @@ body.index-page .hero .welcome>span { background:var(--gold-metal); box-shadow:0
  body.index-page .hero .pitch-accent::after { background:CanvasText; }
 }
 
-/* Two little notes pinned to the homepage, with brass drawing pins. */
+/* Torn-paper notes for the homepage actions. */
 body.index-page .hero-actions { gap:24px; margin-top:38px; padding:0 3px 5px; }
 body.index-page .hero-actions :is(.hero-join,.hero-contact) {
  --note-paper:#f2d889;
@@ -1097,18 +1097,7 @@ body.index-page .hero-actions :is(.hero-join,.hero-contact) {
  transition:transform .22s ease,box-shadow .22s ease;
 }
 body.index-page .hero-actions .hero-contact { --note-paper:#e8e1c9; --note-light:#f5f0df; transform:rotate(1.8deg); }
-body.index-page .hero-actions :is(.hero-join,.hero-contact)::before {
- content:'';
- position:absolute;
- top:-15px;
- left:calc(50% - 17px);
- width:34px;
- height:39px;
- background:url('/assets/note-pin.svg') center/contain no-repeat;
- transform:rotate(-12deg);
- pointer-events:none;
-}
-body.index-page .hero-actions .hero-contact::before { transform:rotate(14deg); }
+body.index-page .hero-actions :is(.hero-join,.hero-contact)::before { content:none; }
 body.index-page .hero-actions :is(.hero-join,.hero-contact)::after {
  content:'';
  position:absolute;
@@ -1162,7 +1151,7 @@ body.index-page .hero-actions :is(.hero-join,.hero-contact):is(:hover,:focus-vis
  box-shadow:none;
  filter:drop-shadow(2px 6px 4px #0004);
 }
-/* Only the paper layer is masked, so the pin and keyboard outline stay whole. */
+/* Only the paper layer is masked, so the keyboard outline stays whole. */
 body.index-page .hero-actions :is(.hero-join,.hero-contact)::after {
  inset:-5px -4px;
  width:auto;
