@@ -85,63 +85,6 @@ if (model) {
   refreshMotion(); systemMotion.addEventListener('change', refreshMotion);
 }
 
-// Draw the Oxford linework directly from scroll position, with no timed loop.
-const oxfordDrawings = [...document.querySelectorAll('[data-oxford-art]')].map(svg => ({
-  svg,
-  anchor: svg.closest('.oxford-band, .page-hero, .model-scroll-space') || svg,
-  progress: -1
-}));
-let outlineFrame = 0;
-function renderOxfordOutlines() {
-  outlineFrame = 0;
-  if (systemMotion.matches) return;
-  const viewport = window.innerHeight;
-  const scroll = window.scrollY;
-  const maxScroll = Math.max(0, document.documentElement.scrollHeight - viewport);
-  // Read all positions before writing styles to avoid repeated layout work.
-  const values = oxfordDrawings.map(scene => {
-    const top = scene.anchor.getBoundingClientRect().top + scroll;
-    const start = Math.max(0, top - viewport * .92);
-    const distance = scene.anchor.classList.contains('oxford-band')
-      ? Math.max(140, viewport * .42)
-      : Math.min(180, viewport * .25);
-    const end = Math.min(start + distance, maxScroll);
-    const progress = end <= start || scroll >= end - 1
-      ? 1
-      : Math.max(0, Math.min(1, (scroll - start) / (end - start)));
-    // Keep the inner-page illustration visible on arrival, then finish its trace.
-    return scene.anchor.classList.contains('page-hero') ? .65 + .35 * progress : progress;
-  });
-  oxfordDrawings.forEach((scene, i) => {
-    const progress = Number(values[i].toFixed(4));
-    if (progress === scene.progress) return;
-    scene.progress = progress;
-    scene.svg.style.setProperty('--draw-progress', progress);
-  });
-}
-function queueOxfordOutlines() {
-  if (!outlineFrame && !systemMotion.matches) outlineFrame = requestAnimationFrame(renderOxfordOutlines);
-}
-function syncOxfordMotion() {
-  if (outlineFrame) { cancelAnimationFrame(outlineFrame); outlineFrame = 0; }
-  oxfordDrawings.forEach(scene => {
-    scene.svg.classList.toggle('is-scroll-drawing', !systemMotion.matches);
-    if (systemMotion.matches) {
-      scene.svg.style.removeProperty('--draw-progress');
-      scene.progress = -1;
-    }
-  });
-  if (!systemMotion.matches) renderOxfordOutlines();
-}
-if (oxfordDrawings.length) {
-  window.addEventListener('scroll', queueOxfordOutlines, { passive: true });
-  window.addEventListener('resize', queueOxfordOutlines, { passive: true });
-  window.addEventListener('pageshow', queueOxfordOutlines);
-  window.addEventListener('load', queueOxfordOutlines, { once: true });
-  systemMotion.addEventListener('change', syncOxfordMotion);
-  syncOxfordMotion();
-}
-
 // Only animate sculptures while visible; pointer movement adds a little depth.
 const sculptures = [...document.querySelectorAll('[data-sculpture]')];
 if (sculptures.length) {
