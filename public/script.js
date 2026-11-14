@@ -128,7 +128,7 @@ window.addEventListener('error', event => {
   }
 }, true);
 
-// Play the cursor reveal once when the wordmark is first seen; clicking it replays it.
+// Loop the cursor reveal while the wordmark is on screen, with a pause between plays; clicking replays it.
 const logoStory = document.querySelector('[data-logo-story]');
 if (logoStory) {
   const stage = logoStory.querySelector('.logo-story-stage');
@@ -139,9 +139,14 @@ if (logoStory) {
   let visible = !('IntersectionObserver' in window);
   let replayFrame = 0;
   let replayTimer = 0;
+  let loopTimer = 0;
+  let waiting = false;
+  const LOOP_PAUSE = 2500;
   function play() {
     cancelAnimationFrame(replayFrame);
     clearTimeout(replayTimer);
+    clearTimeout(loopTimer);
+    waiting = false;
     // From the finished wordmark, fade the button back in before replaying.
     const delay = logoStory.dataset.state === 'complete' ? 380 : 0;
     logoStory.dataset.state = 'ready';
@@ -155,9 +160,13 @@ if (logoStory) {
     stage.disabled = systemMotion.matches;
     stage.setAttribute('aria-label', systemMotion.matches ? 'OxAIMS wordmark' : 'Replay the OxAIMS logo animation');
     if (systemMotion.matches) { cancelAnimationFrame(replayFrame); logoStory.dataset.state = 'complete'; return; }
-    if (!played && ready && visible && !document.hidden) { played = true; play(); }
+    if (ready && visible && !document.hidden && (!played || waiting)) { played = true; play(); }
   }
-  finish.addEventListener('animationend', () => { logoStory.dataset.state = 'complete'; });
+  finish.addEventListener('animationend', () => {
+    logoStory.dataset.state = 'complete';
+    clearTimeout(loopTimer);
+    loopTimer = setTimeout(() => { waiting = true; refreshLogo(); }, LOOP_PAUSE);
+  });
   stage.addEventListener('click', () => { if (ready && !systemMotion.matches) play(); });
   systemMotion.addEventListener('change', refreshLogo);
   document.addEventListener('visibilitychange', refreshLogo);

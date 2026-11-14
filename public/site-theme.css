@@ -1607,3 +1607,42 @@ body[class] main .hk-flow { grid-template-columns:repeat(4,minmax(0,1fr)); }
 }
 
 body[class] main .event-card .hk-link { display:inline-flex; gap:8px; margin-top:14px; font-size:16px; }
+
+/* Upcoming events: one card per dated event, soonest first */
+.upcoming-list { list-style:none; margin:0; padding:0; display:grid; gap:16px; }
+.upcoming-card { max-width:none; display:grid; grid-template-columns:92px minmax(0,1fr) auto; gap:32px; align-items:start; padding:30px 34px; background:#fbf9f4; border:1px solid #171b3f1f; border-radius:3px; }
+.upcoming-date { margin:0; }
+.upcoming-date time { display:flex; flex-direction:column; align-items:center; padding:14px 0 12px; background:#fff; border:1px solid #171b3f1f; border-radius:3px; line-height:1; }
+.upcoming-day { font:500 38px/1 var(--display); color:var(--text); }
+.upcoming-month { margin-top:7px; font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#5c4a33; }
+.upcoming-weekday { margin-top:5px; font-size:13px; color:var(--muted); }
+.upcoming-meta { margin:2px 0 8px; font-size:14px; font-weight:600; letter-spacing:.02em; color:#5c4a33; }
+.upcoming-body h3 { margin:0 0 10px; font-size:24px; font-weight:500; line-height:1.35; color:var(--text); }
+.upcoming-body p:not(.upcoming-meta) { margin:0; max-width:60ch; font-size:17px; line-height:1.7; color:#383b4f; }
+.upcoming-signup { margin-top:20px; }
+.upcoming-partner { display:block; width:120px; height:auto; margin-top:6px; }
+@media (max-width:720px) {
+  .upcoming-card { grid-template-columns:68px minmax(0,1fr); gap:18px 20px; padding:24px 20px; }
+  .upcoming-day { font-size:30px; }
+  .upcoming-partner { grid-column:2; width:100px; margin-top:0; }
+}
+
+/* Sponsors: collaborator logos */
+.collab-logos { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+.collab-logos li { max-width:none; display:flex; align-items:center; justify-content:center; min-height:150px; padding:24px; background:#fbf9f4; border:1px solid #171b3f1f; border-radius:3px; }
+.collab-logos img { display:block; height:auto; max-width:100%; }
+.collab-anthropic { width:210px; }
+.collab-openai { width:150px; }
+
+/* Funding list: a small dot, not a "+" that reads as "expand" */
+.funding-list li:before { content:''; top:50%; left:2px; width:6px; height:6px; border-radius:50%; background:var(--accent); transform:translateY(-50%); }
+
+/* Project images: rounded corners with edges that fade softly into the page (replaces the torn-paper edge). */
+body[class] main .branch-art {
+ border-radius:18px;
+ -webkit-mask:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);
+ -webkit-mask-composite:source-in;
+ mask:linear-gradient(to right,transparent,#000 2.5%,#000 97.5%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);
+ mask-composite:intersect;
+}
+body[class] main .branch-art::after { content:none; }
