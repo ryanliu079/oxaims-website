@@ -1,8 +1,4 @@
 declare namespace Cloudflare {
-  interface Env {
-    DB?: D1Database;
-    BUCKET?: R2Bucket;
-    SIGNUP_ADMIN_EMAIL?: string;
-    SIGNUP_NOTIFICATION_EMAIL?: string;
-  }
+  // No bindings: the site serves static pages and the retired /api/join stub.
+  interface Env {}
 }
