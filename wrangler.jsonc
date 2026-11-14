@@ -4,5 +4,10 @@
   "main": "./worker/index.ts",
   "compatibility_date": "2026-05-15",
   "compatibility_flags": ["nodejs_compat"],
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "oxaims.org", "custom_domain": true },
+    { "pattern": "www.oxaims.org", "custom_domain": true }
+  ]
 }
