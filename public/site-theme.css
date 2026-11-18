@@ -1784,3 +1784,19 @@ body[class] .next-event .next-more { font-size:15px; color:#2f3247; }
  body.index-page .logo-story { width:76%; max-width:300px; justify-self:center; margin-inline:auto; }
  body.index-page .logo-story-stage { height:130px; }
 }
+/* Phones: a compact mind map that fits on one screen. */
+@media(max-width:560px) {
+ body .idea-map { height:520px; margin:18px auto 70px; }
+ body .idea-map .idea-help { width:46%; padding:13px 8px 10px; }
+ body .idea-map .idea-help>.idea-sketch { width:44px; height:37px; margin-bottom:0; }
+ body .idea-map .idea-help h3 { font-size:21px; margin-bottom:3px; }
+ body .idea-map .idea-help p { font-size:15px; line-height:1.18; }
+ body .idea-map .idea-help::before { width:46px; height:15px; top:-7px; }
+ body .idea-people { top:6px; } body .idea-funding { top:10px; }
+ body .idea-support { bottom:8px; } body .idea-tools { bottom:12px; }
+ body .idea-map .idea-you { width:170px; height:150px; }
+ body .idea-map .idea-you>.idea-sketch { width:60px; height:50px; margin-top:4px; }
+ body .idea-map .idea-you h3 { font-size:33px; }
+ body .idea-map .idea-fix { font-size:21px; }
+ body .idea-map .idea-caption { bottom:-58px; font-size:19px; }
+}
