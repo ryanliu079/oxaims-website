@@ -1658,3 +1658,91 @@ body[class] main .branch-art::after { content:none; }
 @media (max-width:900px) { .committee-grid { gap:18px; } .committee-card { padding:18px 18px 22px; } .committee-card h3 { font-size:21px; } }
 @media (max-width:760px) { .committee-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:560px) { .committee-grid { grid-template-columns:1fr; } .committee-card { padding:20px 20px 24px; } }
+/* Hero buttons: liquid glass, matching the logo animation's glass pane. */
+body.index-page .society-intro .hero-actions :is(.hero-join,.hero-contact) {
+ min-height:64px; padding:18px 26px; border-radius:22px; overflow:hidden;
+ font-family:inherit; font-size:18px; font-weight:600; line-height:1.1; letter-spacing:.01em; color:#f3f6ff;
+ border:1px solid transparent; filter:none; text-shadow:0 1px 1px #0003;
+ background:
+   radial-gradient(ellipse at 18% 0%,#dceaff1c,transparent 45%) padding-box,
+   linear-gradient(145deg,#a4c5ee14 0%,#0712274d 35%,#101a3257 68%,#c0d9ff12 100%) padding-box,
+   linear-gradient(132deg,#f0f7ff8c 0%,#d5e7ff4d 14%,#c9deff0f 38%,#c9ddff0a 62%,#c6ddff33 86%,#e6f2ff80 100%) border-box;
+ backdrop-filter:blur(6px) saturate(140%); -webkit-backdrop-filter:blur(6px) saturate(140%);
+ box-shadow:inset 0 1px 1px #eaf4ff33,inset 1px 0 2px #dbeaff14,inset -1px -1px 2px #a9c9fa1c,0 14px 34px #0000002a;
+ transition:transform .2s ease,box-shadow .2s ease;
+}
+body.index-page .society-intro .hero-actions .hero-join {
+ color:#fff4dc;
+ background:
+   radial-gradient(ellipse at 18% 0%,#fff1cf2e,transparent 45%) padding-box,
+   linear-gradient(145deg,#ead2a01f 0%,#1a1d3a59 40%,#1a1d3a59 70%,#ead2a017 100%) padding-box,
+   linear-gradient(132deg,#ffe9b8b3 0%,#ead2a066 16%,#d3b4771a 40%,#d3b47712 62%,#ead2a04d 86%,#fff0c999 100%) border-box;
+}
+body.index-page .society-intro .hero-actions :is(.hero-join,.hero-contact)::after {
+ content:''; inset:2px; z-index:-1; mask:none; border-radius:inherit; background:radial-gradient(ellipse 44% 14% at 15% 0%,#edf8ff1f,transparent 78%),radial-gradient(ellipse 36% 14% at 89% 100%,#d4e7ff14,transparent 78%);
+}
+body.index-page .society-intro .hero-actions :is(.hero-join,.hero-contact)>span { font-family:inherit; font-size:18px; line-height:1; color:inherit; }
+body.index-page .society-intro .hero-actions :is(.hero-join,.hero-contact):is(:hover,:focus-visible) {
+ transform:translateY(-2px); box-shadow:inset 0 1px 1px #eaf4ff4d,inset 1px 0 2px #dbeaff1f,inset -1px -1px 2px #a9c9fa26,0 18px 40px #00000040;
+}
+@media (max-width:560px) { body.index-page .society-intro .hero-actions :is(.hero-join,.hero-contact) { min-height:58px; font-size:17px; } }
+@media (prefers-reduced-motion:reduce) { body.index-page .society-intro .hero-actions :is(.hero-join,.hero-contact) { transition:none; } }
+.programme-intro { max-width:46ch; margin:18px 0 0; font-size:18px; line-height:1.7; color:#4d5170; }
+/* Four project branches: four across on wide screens, two by two below. */
+body[class] main .project-branches { grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
+@media (max-width:1180px) { body[class] main .project-branches { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:none; gap:28px; } }
+@media (max-width:640px) { body[class] main .project-branches { grid-template-columns:1fr; } }
+.project-hero-actions { margin-top:30px; display:flex; }
+.closing-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+/* Mind map: inline sketches so a pencil can draw them. */
+.idea-help>.idea-sketch { display:block; width:105px; height:88px; margin:0 auto 3px; overflow:visible; }
+.idea-you>.idea-sketch { position:static; display:block; width:105px; height:88px; margin:5px auto 0; inset:auto; stroke:none; opacity:1; overflow:visible; }
+.idea-you h3 { position:relative; }
+.idea-word { position:relative; display:inline-block; }
+.idea-strike { position:absolute; left:-6%; top:42%; width:112%; height:22px; overflow:visible; fill:none; stroke:#b4552f; stroke-width:3.2; stroke-linecap:round; pointer-events:none; }
+.idea-fix { position:absolute; left:42%; bottom:86%; font:600 27px/1 var(--hand); color:#b4552f; white-space:nowrap; transform:rotate(-8deg); pointer-events:none; }
+.idea-caption { position:absolute; left:50%; top:calc(50% + 98px); margin:0; display:flex; flex-direction:column; align-items:center; transform:translateX(-50%) rotate(-2deg); font:500 24px/1.2 var(--hand); color:#805f37; text-align:center; width:max-content; max-width:300px; }
+.idea-caption svg { width:34px; height:34px; fill:none; stroke:#9a7849; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; overflow:visible; }
+.idea-pencil { position:absolute; left:0; top:0; width:58px; height:58px; pointer-events:none; z-index:5; opacity:0; transition:opacity .35s ease; will-change:transform; filter:drop-shadow(2px 4px 3px #2a1d0d33); }
+.idea-pencil.is-on { opacity:1; }
+.idea-map.is-drawing .idea-word-ink { opacity:0; }
+.idea-word-ink { transition:opacity .12s linear; }
+@media(max-width:760px) {
+ .idea-help>.idea-sketch { width:84px; height:70px; }
+ .idea-you>.idea-sketch { width:90px; height:75px; }
+ .idea-caption { top:calc(50% + 86px); font-size:21px; max-width:220px; }
+ .idea-caption svg { width:26px; height:26px; }
+ .idea-fix { font-size:23px; }
+}
+@media(max-width:760px) {
+ .idea-map { margin-bottom:84px; }
+ .idea-caption { top:auto; bottom:-68px; max-width:300px; }
+ .idea-caption svg { display:none; }
+}
+
+/* Mind map helpers as sticky notes. */
+body .idea-map .idea-help { width:228px; padding:22px 16px 20px; background:var(--note,#f3e3a0); box-shadow:0 1px 1px #5a46200f,0 10px 18px -8px #5a462047,inset 0 -18px 22px -18px #7a5a2a24; border-radius:2px 2px 14px 2px / 2px 2px 6px 2px; transition:opacity .28s ease,translate .38s cubic-bezier(.2,1.4,.4,1),scale .38s cubic-bezier(.2,1.4,.4,1); }
+body .idea-map .idea-help::before { content:''; position:absolute; left:50%; top:-11px; width:74px; height:22px; translate:-50% 0; rotate:-3deg; background:#fffaf0a8; box-shadow:0 1px 2px #0000000f; border-left:1px dashed #0000000d; border-right:1px dashed #0000000d; }
+body .idea-map .idea-help>.idea-sketch { width:78px; height:65px; margin-bottom:2px; }
+body .idea-map .idea-help h3 { font-size:30px; margin-bottom:6px; }
+body .idea-map .idea-help p { font-size:21px; line-height:1.22; color:#3d4052; }
+.idea-people { --note:#f3e3a0; }
+.idea-funding { --note:#f2d3bb; }
+.idea-support { --note:#dbe5c6; }
+.idea-tools { --note:#d2deec; }
+body .idea-map .idea-help.note-waiting { opacity:0; translate:0 -22px; scale:1.08; }
+@media(max-width:1000px) and (min-width:761px) { body .idea-map .idea-help { width:200px; } }
+@media(max-width:760px) {
+ body .idea-map .idea-help { width:46%; padding:18px 10px 14px; }
+ body .idea-map .idea-help>.idea-sketch { width:60px; height:50px; }
+ body .idea-map .idea-help h3 { font-size:24px; }
+ body .idea-map .idea-help p { font-size:17px; }
+ body .idea-map .idea-help::before { width:56px; height:18px; top:-9px; }
+}
+@media(prefers-reduced-motion:reduce) { body .idea-map .idea-help { transition:none; } }
+/* Project branches borrow the mind map's sticky-note colours. */
+body[class] main .project-card .branch-art { background:radial-gradient(90% 100% at 50% 40%,color-mix(in srgb,var(--note) 70%,#fff) 0%,var(--note) 62%,color-mix(in srgb,var(--note) 86%,#5a4620) 100%); }
+body[class] main #apps { --note:#d2deec; }
+body[class] main #physical { --note:#f2d3bb; }
+body[class] main #research { --note:#dbe5c6; }
+body[class] main #other { --note:#f3e3a0; }

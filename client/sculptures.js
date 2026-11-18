@@ -169,7 +169,7 @@ function initialise() {
 }
 function buildScene(el, index, materials, environment) {
   const kind = el.hasAttribute('data-chip-studio') ? 'chip' : [...el.classList].find(name => name.startsWith('sculpture-') && name !== 'sculpture-scene').slice(10);
-  const projectBranch = ['apps', 'physical', 'research'].includes(kind);
+  const projectBranch = ['apps', 'physical', 'research', 'other'].includes(kind);
   const scene = new THREE.Scene();
   scene.environment = environment;
   const camera = new THREE.OrthographicCamera(-3, 3, 2.15, -2.15, .1, 50);
@@ -177,7 +177,7 @@ function buildScene(el, index, materials, environment) {
   if (kind === 'chip') camera.position.set(4.9, 5.8, 6.9);
   else if (projectBranch) camera.position.set(4.4, 3.5, 7.7);
   // Per-model framing keeps each model clear of the torn top edge and visually centred.
-  const framing = { apps: [1.05, 2.25, .3], physical: [.85, 1.95, .1], research: [1.02, 2.0, .36] }[kind];
+  const framing = { apps: [1.05, 2.25, .3], physical: [.85, 1.95, .1], research: [1.02, 2.0, .36], other: [.95, 2.0, .2] }[kind];
   camera.lookAt(0, kind === 'chip' ? .8 : framing ? framing[0] : .9, 0);
   scene.add(new THREE.HemisphereLight(kind === 'chip' || projectBranch ? 0xfff4df : 0xf5f6ff, 0x101329, 1.4));
   const light = new THREE.DirectionalLight(kind === 'chip' || projectBranch ? 0xffeed5 : 0xf9faff, kind === 'chip' || projectBranch ? 2.1 : 2.6);
@@ -352,6 +352,29 @@ function buildBranchModel(root, branch) {
     box(head,.34,.22,.24,'graphite',0,0,0,.04);
     const lens=cylinder(head,.08,.08,'black',0,0,.14);lens.rotation.x=Math.PI/2;
     box(head,.035,.035,.02,'led',.12,.07,.125,.008);
+  } else if(branch==='other') {
+    // An open sketchbook, a pencil, a lit bulb and loose parts: whatever idea comes next.
+    const book=part(group,0);book.position.set(-.35,0,.2);book.rotation.y=-.16;
+    for(const side of [-1,1]){box(book,1.5,.06,2.05,'navy',side*.78,.03,0,.03);box(book,1.4,.05,1.95,'paper',side*.76,.085,0,.02);}
+    box(book,.06,.07,1.95,'ink',0,.09,0,.02);
+    for(let i=0;i<8;i++)box(book,1.05,.004,.014,'ink',.8,.112,-.72+i*.2,.002);
+    line(book,[[-1.25,.115,.62],[-1.05,.115,.05],[-.75,.115,.45],[-.55,.115,-.3],[-.3,.115,.1]],'copper',.014);
+    line(book,[[-1.3,.115,-.55],[-.95,.115,-.75],[-.55,.115,-.62]],'ink',.01);
+    const pencil=part(group,.07);pencil.position.set(.55,.07,.95);pencil.rotation.y=.5;
+    const shaft=cylinder(pencil,.055,1.3,'brass',0,0,0,6);shaft.rotation.z=Math.PI/2;
+    const tip=mesh(pencil,new THREE.ConeGeometry(.055,.22,6),'paper',-.76,0,0);tip.rotation.z=Math.PI/2;
+    const rubber=cylinder(pencil,.056,.14,'copper',.72,0,0);rubber.rotation.z=Math.PI/2;
+    const bulb=part(group,0);bulb.position.set(1.55,0,-.65);bulb.scale.setScalar(1.35);
+    cylinder(bulb,.3,.08,'graphite',0,.04,0);
+    for(let i=0;i<4;i++)cylinder(bulb,.2-i*.004,.07,'brass',0,.13+i*.08,0);
+    cylinder(bulb,.13,.1,'brass',0,.47,0);
+    const glow=new THREE.MeshStandardMaterial({color:0xfff1c8,emissive:0xffcf73,emissiveIntensity:.85,roughness:.25,transparent:true,opacity:.92});
+    mesh(bulb,new THREE.SphereGeometry(.46,48,32),glow,0,.92,0);
+    const loose=part(group,0);loose.position.set(1.55,0,.75);
+    box(loose,.3,.3,.3,'copper',0,.15,0,.04);
+    box(loose,.3,.3,.3,'cream',.38,.15,-.1,.04).rotation.y=.4;
+    box(loose,.3,.3,.3,'navy',.17,.45,-.05,.04).rotation.y=.2;
+    group.scale.setScalar(1.28);
   } else {
     // Two angled monitors: a PnL dashboard and a page of model fits.
     const screens=[canvasTexture(1600,960,drawPnl),canvasTexture(1600,960,drawFits)];
