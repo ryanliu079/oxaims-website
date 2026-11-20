@@ -1800,3 +1800,13 @@ body[class] .next-event .next-more { font-size:15px; color:#2f3247; }
  body .idea-map .idea-fix { font-size:21px; }
  body .idea-map .idea-caption { bottom:-58px; font-size:19px; }
 }
+/* Committee: three to a row at every width; a short last row sits centred. */
+body .committee-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:28px; }
+body .committee-grid>.committee-card { flex:0 0 calc((100% - 56px) / 3); min-width:0; }
+@media (max-width:900px) { body .committee-grid { gap:18px; } body .committee-grid>.committee-card { flex-basis:calc((100% - 36px) / 3); } }
+@media (max-width:560px) {
+ body .committee-grid { gap:10px; }
+ body .committee-grid>.committee-card { flex-basis:calc((100% - 20px) / 3); padding:10px 8px 12px; }
+ body .committee-card h3 { font-size:15px; line-height:1.2; margin-top:8px; }
+ body .committee-card p { font-size:12.5px; margin-top:3px; }
+}
