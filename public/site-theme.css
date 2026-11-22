@@ -1810,3 +1810,16 @@ body .committee-grid>.committee-card { flex:0 0 calc((100% - 56px) / 3); min-wid
  body .committee-card h3 { font-size:15px; line-height:1.2; margin-top:8px; }
  body .committee-card p { font-size:12.5px; margin-top:3px; }
 }
+/* Upcoming event without a sign-up link yet. */
+body .upcoming-body p.upcoming-soon { margin-top:18px; font-size:15px; font-style:italic; color:#6a5a44; }
+/* Two partner logos on one event: the club badge above the Anthropic wordmark. */
+body .upcoming-partners { display:flex; flex-direction:column; align-items:center; gap:12px; }
+body .upcoming-partners img { display:block; width:100%; height:auto; }
+body .upcoming-partners .cbc-logo { width:88px; border-radius:14px; }
+@media(max-width:760px) {
+ body .upcoming-partners { flex-direction:row; align-items:center; gap:16px; width:auto; }
+ body .upcoming-partners img { width:100px; }
+ body .upcoming-partners .cbc-logo { width:56px; border-radius:10px; }
+}
+body .upcoming-partners .cbc-logo { width:104px; }
+@media(max-width:760px) { body .upcoming-partners .cbc-logo { width:68px; } }
