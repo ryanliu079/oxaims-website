@@ -1823,3 +1823,38 @@ body .upcoming-partners .cbc-logo { width:88px; border-radius:14px; }
 }
 body .upcoming-partners .cbc-logo { width:104px; }
 @media(max-width:760px) { body .upcoming-partners .cbc-logo { width:68px; } }
+/* Past events: a recap card with the team builds. */
+body .past-card { background:#f6f3ea; }
+body .past-builds { list-style:none; margin:16px 0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+body .past-builds li { padding:6px 12px; border-radius:999px; background:#fff; border:1px solid #171b3f1f; font-size:15px; color:#2f3247; }
+body .upcoming-body .past-link { display:inline-flex; margin-top:16px; font-size:16px; }
+body .past-card .upcoming-body p + p { margin-top:0; }
+@media(max-width:760px) { body .past-builds li { font-size:14px; padding:5px 10px; } }
+/* Phones: event cards keep the date beside the title, then the text runs full width. */
+@media(max-width:760px) {
+ body .upcoming-card { grid-template-columns:62px minmax(0,1fr); gap:0 16px; align-items:start; }
+ body .upcoming-card .upcoming-date { grid-row:1 / span 2; }
+ body .upcoming-card .upcoming-body { display:contents; }
+ body .upcoming-card .upcoming-body>* { grid-column:1 / -1; }
+ body .upcoming-card .upcoming-body>.upcoming-meta,body .upcoming-card .upcoming-body>h3 { grid-column:2; }
+ body .upcoming-card .upcoming-body>h3 { margin-bottom:14px; }
+ body .upcoming-card .upcoming-body>p:not(.upcoming-meta) { margin-top:6px; font-size:16px; line-height:1.6; }
+ body .upcoming-card .upcoming-partner { grid-column:1 / -1; margin-top:18px; }
+}
+/* Past event photo strip. */
+body .past-card .past-photos { grid-column:1 / -1; display:grid; grid-template-columns:1.6fr 1.6fr 1fr 1fr 1.6fr; gap:10px; margin-top:26px; }
+body .past-photos figure { margin:0; overflow:hidden; border-radius:4px; background:#e9e4d8; aspect-ratio:4 / 3.4; }
+body .past-photos figure.is-tall { aspect-ratio:auto; }
+body .past-photos img { display:block; width:100%; height:100%; object-fit:cover; }
+@media(max-width:900px) and (min-width:761px) { body .past-card .past-photos { grid-template-columns:repeat(3,1fr); } body .past-photos figure,body .past-photos figure.is-tall { aspect-ratio:4 / 3; } }
+@media(max-width:760px) {
+ body .past-card .past-photos { display:flex; gap:10px; margin:22px -20px 0; padding:0 20px 6px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+ body .past-card .past-photos::-webkit-scrollbar { display:none; }
+ body .past-photos figure { flex:0 0 78%; aspect-ratio:4 / 3; scroll-snap-align:start; }
+ body .past-photos figure.is-tall { flex-basis:46%; aspect-ratio:3 / 4; }
+}
+@media(max-width:760px) {
+ body .past-card .upcoming-body>*,body .past-card .upcoming-partner { order:2; }
+ body .past-card .upcoming-body>.upcoming-meta,body .past-card .upcoming-body>h3 { order:0; }
+ body .past-card .past-photos { order:1; margin-top:4px; margin-bottom:12px; }
+}
